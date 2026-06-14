@@ -2,11 +2,7 @@ const { DatabaseSync } = require('node:sqlite');
 const path = require('path');
 const fs = require('fs');
 
-// En production Railway, stocker dans /data (volume persistant)
-const dbPath = process.env.RAILWAY_ENVIRONMENT
-  ? '/data/mangas.db'
-  : path.join(__dirname, 'mangas.db');
-
+const dbPath = path.join(__dirname, 'mangas.db');
 const db = new DatabaseSync(dbPath);
 
 db.exec(`
